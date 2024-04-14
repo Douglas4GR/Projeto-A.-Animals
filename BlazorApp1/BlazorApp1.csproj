@@ -6,4 +6,12 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <None Include="wwwroot\bootstrap\bakugo.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Components\Imagens\" />
+  </ItemGroup>
+
 </Project>

@@ -1,15 +1,15 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\BlazorApp1.csproj": {}
+    "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\AdotAnimais2.csproj": {}
   },
   "projects": {
-    "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\BlazorApp1.csproj": {
+    "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\AdotAnimais2.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\BlazorApp1.csproj",
-        "projectName": "BlazorApp1",
-        "projectPath": "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\BlazorApp1.csproj",
+        "projectUniqueName": "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\AdotAnimais2.csproj",
+        "projectName": "AdotAnimais2",
+        "projectPath": "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\AdotAnimais2.csproj",
         "packagesPath": "C:\\Users\\alien\\.nuget\\packages\\",
         "outputPath": "C:\\Users\\alien\\Documents\\GitHub\\Projeto-BlazorApp-v1\\BlazorApp1\\obj\\",
         "projectStyle": "PackageReference",
