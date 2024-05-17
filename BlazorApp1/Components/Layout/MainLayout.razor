@@ -6,8 +6,17 @@
     </div>
 
     <main>
+        <!-- Informações do usuário e botão de logout aqui -->
         <div class="top-row px-4">
-            <a href="https://learn.microsoft.com/aspnet/core/" target="_blank">About</a>
+            <div class="d-flex row align-items-center">
+                <img src="~/bootstrap/bakugo.png" class="avatar img-fluid rounded-circle mr-2" style="width: 32px; height: 32px;" alt="Usuário">
+                <div class="col-auto">
+                    <span class="mr-2">@usuarioNome</span>
+                </div>
+                <div class="col-auto">
+                    <button class="btn btn-danger ml-auto mr-2" @onclick="Logout">Logout</button>
+                </div>
+            </div>
         </div>
 
         <article class="content px-4">
@@ -17,7 +26,15 @@
 </div>
 
 <div id="blazor-error-ui">
-    An unhandled error has occurred.
+    An unhandled error has occurred (um erro ocorreu).
     <a href="" class="reload">Reload</a>
     <a class="dismiss">🗙</a>
 </div>
+
+@code {
+    private string usuarioNome = "Douglas Garcia";
+    private void Logout()
+    {
+        // Implemente a lógica de logout aqui
+    }
+}
