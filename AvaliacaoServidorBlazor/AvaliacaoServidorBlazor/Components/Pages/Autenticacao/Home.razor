@@ -1,0 +1,18 @@
+﻿@page "/"
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            if (await autenticacao_service.isLoggedAsync())
+                moverpara.NavigateTo("/principal", false, true);
+            else
+                moverpara.NavigateTo("/login", false, true);
+        }
+        catch
+        {
+            moverpara.NavigateTo("/login", false, true);
+        }
+    }
+}

@@ -1,0 +1,38 @@
+﻿@page "/logout"
+@using System.Security
+@inject ClientApiLogin cliente
+@rendermode InteractiveAuto
+
+<div class="container">
+    <div class="row justify-content-center align-items-center">
+        <div class="col-auto">
+            <div class="card">
+                <div class="card-header p-3 mb-2 bg-danger text-white">
+                    <h1>Sair</h1>
+                </div>
+                <div class="card-body">
+                    <h4 class="Ghotam">Tem certeza que deseja sair?</h4>
+                    <div class="row justify-content-center align-items-center">
+                        <div class="col-auto mt-3">
+                            <button class="btn btn-primary" @onclick="voltarHome">Cancelar</button>
+                            <button class="btn btn-danger" @onclick="logoutSite">Fazer logout</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@code {
+
+    private void voltarHome()
+    {
+        moverpara.NavigateTo("/");
+    }
+
+    private async Task logoutSite()
+    {
+        await ((AutenticacaoPersonalizada)autenticador).UpdateAutenticationStateAsync(new Token { token = null });
+        moverpara.NavigateTo("/login");
+    }
+}

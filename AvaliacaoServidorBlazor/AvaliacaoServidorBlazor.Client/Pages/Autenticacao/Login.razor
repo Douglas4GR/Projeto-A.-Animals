@@ -1,0 +1,101 @@
+﻿@page "/login"
+@using System.Security
+@rendermode InteractiveAuto
+<PageTitle>Login</PageTitle>
+<BSToaster Position="ToastPosition" ZIndex="ZIndex" />
+<!-- seção que terá o novo formulário de login -->
+<section>
+    <div class="imgBx">
+        <img src="bootstrap/FuncionariosFelizes.jpg" alt="Fundo de tela"/>
+    </div>
+    <div class="contentBx">
+        <div class="formBx">
+            <h2>Entrar</h2>
+            <EditForm Model="_modelo" FormName="Login" OnValidSubmit="Logar">
+                <DataAnnotationsValidator />
+                <div class="inputBx">
+                    <span>Usuário</span>
+                    <InputText @bind-Value="_modelo!.Username" type="text" autocomplete="off" placeholder="Digite seu usuário" id="usuario" class="form-control rounded-pill bg-transparent border-1 text-secondary" />
+                    <label for="usuario"></label>
+                    <ValidationMessage For="() => _modelo!.Username" />
+                </div>
+                <div class="inputBx">
+                    <span>Senha</span>
+                    <InputText @bind-Value="_modelo!.Password" type="password" autocomplete="current-password" placeholder="Digite sua senha" id="senha" class="form-control rounded-pill bg-transparent border-1 text-secondary" />
+                    <label for="senha"></label>
+                    <ValidationMessage For="() => _modelo!.Password" />
+                </div>
+
+                <div class="remember">
+                    <InputCheckbox @bind-Value="_modelo!.Lembre_me" type="checkbox" id="lembre-me" />
+                    <label class="form-check-label" for="lembre-me">Lembre-me</label>
+                </div>
+                @if (Logando)
+                {
+                    <button class="btn btn-primary w-100 py-2 border border-1 rounded-pill" type="button" disabled>
+                        <span class="spinner-border spinner-border-sm position-absolute top-50 start-50 translate-middle" role="status" aria-hidden="true"></span>
+                        Logando...
+                    </button>
+                }
+                else
+                {
+                    <button class="btn btn-primary w-100 py-2 border border-1 rounded-pill" type="submit">Confirmar</button>
+
+                }
+                <p class="mt-5 mb-3 text-body-secondary">© FAETEC-DGI 2024</p>
+            </EditForm>
+            <img src="bootstrap/logoDGI.png" class="watermark" alt="logo" />
+        </div>
+    </div>
+</section>
+
+
+@code {
+    [SupplyParameterFromForm]
+    public ModelView_Login? _modelo { get; set; }
+
+    private bool Logando = false;
+    private Position ToastPosition { get; set; } = Position.Fixed;
+    private int ZIndex { get; set; } = 1025;
+
+    private async void Logar()
+    {
+        Logando = true;
+        try
+        {
+            var _token = await cliente.Logar(_modelo!);
+            await ((AutenticacaoPersonalizada)autenticador).UpdateAutenticationStateAsync(_token);
+            //await autenticacao_service.Updateauthentication(_token.token);
+            moverpara.NavigateTo("/");
+        }
+        catch (SecurityException e)//Apenas como referência de código para falha no acesso do jwt!!! Remover!!!
+        {
+            await autenticacao_service.LogOffAsync();
+            LancarErroToast(e);
+        }
+        catch (Exception e)
+        {
+            LancarErroToast(e);
+        }
+    }
+
+    private void LancarErroToast(Exception e)
+    {
+        _blazorStrap.Toaster.Add("Falha", e.Message, o =>
+        {
+        o.Color = BSColor.Danger;
+        o.CloseAfter = 5000;
+        o.Toast = Toast.Default;
+        o.HasIcon = true;
+        });
+        Logando = false;
+        StateHasChanged();
+    }
+
+    protected override async Task OnInitializedAsync()
+    {
+        //if (await autenticacao_service.isLoggedAsync())
+        //    moverpara.NavigateTo("/");
+        _modelo = new ModelView_Login();
+    }
+}

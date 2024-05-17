@@ -1,0 +1,61 @@
+﻿@inject ClientApiCicloAvaliativo cliente
+@inject ClientApiServidor clienteServidor
+@inject IBlazorStrap _blazorStrap
+@page "/fichaReconsideracao"
+@using BlazorStrap
+@using System.Security
+@using HttpClientService
+@using Microsoft.AspNetCore.Authorization
+@using RH.Models
+@using AvaliacaoServidorBlazor.Client.Pages
+@rendermode InteractiveAuto
+@attribute [Authorize]
+
+<PageTitle>fichaReconsideracao</PageTitle>
+<BlazorStrap.V5.BSToaster Position="ToastPosition" ZIndex="ZIndex" />
+
+<!--Tabela de servidores componentizada-->
+<ListagemReavaliacao/>
+
+@code {
+    protected override async Task OnInitializedAsync()
+    {
+        try
+        {
+            await CarregarServidor();
+        }
+        catch (SecurityException e)
+        {
+            await autenticacao_service.LogOffAsync();
+            LancarErroToast(e);
+        }
+        catch (Exception ex)
+        {
+            LancarErroToast(ex);
+        }
+    }
+
+    //requisitando servidor com id funcional logado
+    private Servidor servidor { get; set; } = new Servidor();
+
+    public async Task CarregarServidor()
+    {
+        var servidores = await clienteServidor.getServidorAsync("", await autenticacao_service.GetAuthenticationStateAsync());
+        servidor = servidores.FirstOrDefault();
+    }
+
+
+    //propriedades da Toast
+    private Position ToastPosition { get; set; } = Position.Fixed;
+    private int ZIndex { get; set; } = 1025;
+    private void LancarErroToast(Exception e)
+    {
+        _blazorStrap.Toaster.Add("Falha", e.Message, o =>
+        {
+            o.Color = BSColor.Danger;
+            o.CloseAfter = 5000;
+            o.Toast = Toast.Default;
+            o.HasIcon = true;
+        });
+    }
+}
