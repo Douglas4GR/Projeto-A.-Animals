@@ -1,0 +1,8 @@
+﻿@page "/anuncio/{AnuncioID:int}"
+Anuncio @AnuncioID
+@code {
+    [Parameter]
+    public int AnuncioID { get; set; }
+
+    // Você pode carregar os detalhes do anúncio com base no AnuncioID
+}

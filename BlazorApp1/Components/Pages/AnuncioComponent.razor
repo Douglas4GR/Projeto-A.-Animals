@@ -1,5 +1,16 @@
-﻿<h3>AnuncioComponent</h3>
+﻿<div class="card">
+    <div class="card-header">
+        <h4 class="card-title">Anuncio @AnuncioID</h4>
+    </div>
+    <div class="card-body">
+        <h2>Anuncio @AnuncioID</h2>
+        <p>Descrição</p>
+        <p>Preço</p>
+        <p>Telefone</p>
+    </div>
+</div>
 
 @code {
-
+    [Parameter]
+    public int AnuncioID { get; set; }
 }
