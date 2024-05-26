@@ -117,3 +117,6 @@ C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Deb
 C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Debug\net8.0\BlazorApp1.pdb
 C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Debug\net8.0\BlazorApp1.genruntimeconfig.cache
 C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Debug\net8.0\ref\BlazorApp1.dll
+C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Debug\net8.0\BlazorApp1.csproj.AssemblyReference.cache
+C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\bin\Debug\net8.0\Blazored.LocalStorage.dll
+C:\Users\alien\Documents\GitHub\Projeto-BlazorApp-AdotAnimais\BlazorApp1\obj\Debug\net8.0\BlazorApp1.csproj.Up2Date
