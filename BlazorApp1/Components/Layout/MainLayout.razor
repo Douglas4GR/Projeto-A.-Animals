@@ -1,6 +1,6 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="page @((darkMode)?"dark-mode":"light-mode")">
+<div class="page"style="background: rgb(255,201,1);background: radial-gradient(circle, rgba(255,201,1,1) 2%, rgba(140,225,235,1) 15%, rgba(21,74,138,1) 97%);">
     <div class="sidebar">
         <NavMenu />
     </div>
@@ -8,12 +8,6 @@
         <!-- Informações do usuário e botão de logout aqui -->
         <div class="top-row px-4">
             <div class="d-flex row align-items-center">
-                <div class="col-auto">
-                    <div class="col-auto">
-                        <input type="checkbox" class="toggle-mode" @bind="darkMode" />
-                        <label for="toggle-mode">Alternar Modo</label>
-                    </div>
-                </div>
                 <div class="col-auto">
                     <span class="mr-2">@usuarioNome</span>
                 </div>
@@ -37,20 +31,6 @@
 
 @code {
     private string usuarioNome = "Douglas Garcia";
-    private bool darkMode = true;
-
-    private async void ToggleTheme()
-    {
-        if (darkMode)
-        {
-            darkMode = false;
-        }
-        else
-        {
-            darkMode = true;
-        }
-        StateHasChanged(); // Notifica o Blazor sobre a mudança de estado
-    }
 
     private void Logout()
     {

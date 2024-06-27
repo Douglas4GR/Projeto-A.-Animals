@@ -1,7 +1,55 @@
 ﻿@page "/mensagens"
 
-<h3>Mensagens</h3>
+<div class="container-fluid">
+    <div class="row justify-content-center">
+        <div class="overflow-auto" style="max-height: 600px;">
+            @foreach (var mensagem in mensagens)
+            {
+                <div class="col-lg-10 col-sm-12 mt-3">
+                    <div class="card">
+                        <div class="card-body">
+                            <div class="row">
+                                <div class="col-1" style="height: 40px; width: 40px;border-radius: 50%; background-color:@mensagem.Cor;">
+                                </div>
+                                <div class="col-3">
+                                    <h5>@mensagem.Nome</h5>
+                                </div>
+                                <div class="col-8">
+                                    <p class="text-end">@mensagem.Texto</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</div>
 
 @code {
+    private List<Mensagem> mensagens = new List<Mensagem>
+    {
+        new Mensagem { Nome = "Alice", Texto = "Olá, como você está?", Cor = "red" },
+        new Mensagem { Nome = "Bob", Texto = "Tudo bem por aqui!", Cor = "blue" },
+        new Mensagem { Nome = "Carlos", Texto = "Vamos nos encontrar amanhã?", Cor = "green" },
+        new Mensagem { Nome = "Diana", Texto = "Claro, a que horas?", Cor = "purple" },
+        new Mensagem { Nome = "Eli", Texto = "Que tal às 10h?", Cor = "orange" },
+        new Mensagem { Nome = "Fernanda", Texto = "Perfeito, vejo você lá!", Cor = "yellow" },
+        new Mensagem { Nome = "Gabriel", Texto = "Tenho novidades para contar.", Cor = "pink" },
+        new Mensagem { Nome = "Hugo", Texto = "Mal posso esperar para ouvir!", Cor = "cyan" },
+        new Mensagem { Nome = "Irene", Texto = "Recebi uma promoção no trabalho!", Cor = "magenta" },
+        new Mensagem { Nome = "João", Texto = "Parabéns! Você merece.", Cor = "lime" },
+        new Mensagem { Nome = "Karina", Texto = "Vamos comemorar neste fim de semana?", Cor = "teal" },
+        new Mensagem { Nome = "Lucas", Texto = "Estou dentro!", Cor = "navy" },
+        new Mensagem { Nome = "Mariana", Texto = "Eu também!", Cor = "olive" },
+        new Mensagem { Nome = "Nina", Texto = "Onde vamos nos encontrar?", Cor = "maroon" },
+        new Mensagem { Nome = "Otávio", Texto = "Que tal naquele novo restaurante?", Cor = "silver" }
+    };
 
+    private class Mensagem
+    {
+        public string? Nome { get; set; }
+        public string? Texto { get; set; }
+        public string? Cor { get; set; }
+    }
 }

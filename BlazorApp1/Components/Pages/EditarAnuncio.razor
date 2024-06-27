@@ -1,0 +1,41 @@
+﻿@page "/editar-anuncio"
+@inject NavigationManager Navigation
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private Anuncio anuncio;
+
+    protected override void OnInitialized()
+    {
+        // Código para buscar o anúncio pelo id
+        anuncio = new Anuncio { Id = id, Titulo = "Cachorro para adoção", Descricao = "Cachorro amigável de 2 anos.", Imagem = "https://via.placeholder.com/150" };
+    }
+
+    private void SalvarAnuncio()
+    {
+        // Código para salvar o anúncio editado
+        Navigation.NavigateTo("/meus-anuncios");
+    }
+
+    private class Anuncio
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public string Imagem { get; set; }
+    }
+}
+
+<div class="container mt-5">
+    <h2>Editar Anúncio</h2>
+    <div class="mt-4">
+        <label>Título</label>
+        <input type="text" class="form-control" @bind="anuncio.Titulo" />
+        <label>Descrição</label>
+        <textarea class="form-control" @bind="anuncio.Descricao"></textarea>
+        <label>Imagem URL</label>
+        <input type="text" class="form-control" @bind="anuncio.Imagem" />
+        <button class="btn btn-success mt-3" @onclick="SalvarAnuncio">Salvar</button>
+    </div>
+</div>

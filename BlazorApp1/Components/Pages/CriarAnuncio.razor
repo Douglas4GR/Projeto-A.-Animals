@@ -1,0 +1,27 @@
+﻿@page "/criar-anuncio"
+@inject NavigationManager Navigation
+
+<div class="container mt-5">
+    <h2>Criar Anúncio</h2>
+    <div class="mt-4">
+        <label>Título</label>
+        <input type="text" class="form-control" @bind="titulo" />
+        <label>Descrição</label>
+        <textarea class="form-control" @bind="descricao"></textarea>
+        <label>Imagem URL</label>
+        <input type="text" class="form-control" @bind="imagemUrl" />
+        <button class="btn btn-success mt-3" @onclick="SalvarAnuncio">Salvar</button>
+    </div>
+</div>
+
+@code {
+    private string titulo;
+    private string descricao;
+    private string imagemUrl;
+
+    private void SalvarAnuncio()
+    {
+        // Código para salvar o anúncio
+        Navigation.NavigateTo("/meus-anuncios");
+    }
+}

@@ -1,7 +1,41 @@
-﻿@page "/meusanuncios"
+﻿@page "/meus-anuncios"
+@inject NavigationManager Navigation
 
-<h3>Meus Anuncios</h3>
+<div class="container mt-5">
+    <div class="d-flex justify-content-between align-items-center">
+        <h2>Meus Anúncios</h2>
+        <NavLink class="btn btn-primary" href="/criar-anuncio">Criar Anúncio</NavLink>
+    </div>
+    <div class="row mt-4">
+        @foreach (var anuncio in anuncios)
+        {
+            <div class="col-md-4 mb-4">
+                <div class="card">
+                    <img src="@anuncio.Imagem" class="card-img-top" alt="@anuncio.Titulo">
+                    <div class="card-body">
+                        <h5 class="card-title">@anuncio.Titulo</h5>
+                        <p class="card-text">@anuncio.Descricao</p>
+                        <NavLink class="btn btn-primary" href="/anuncioDet">Ver Anúncio</NavLink>
+                    </div>
+                </div>
+            </div>
+        }
+    </div>
+</div>
 
 @code {
+    private List<Anuncio> anuncios = new List<Anuncio>
+    {
+        new Anuncio { Id = 1, Titulo = "Cachorro para adoção", Descricao = "Cachorro amigável de 2 anos.", Imagem = "https://via.placeholder.com/150" },
+        new Anuncio { Id = 2, Titulo = "Gato para adoção", Descricao = "Gato carinhoso de 1 ano.", Imagem = "https://via.placeholder.com/150" },
+        // Adicione mais anúncios conforme necessário
+    };
 
+    private class Anuncio
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public string Imagem { get; set; }
+    }
 }

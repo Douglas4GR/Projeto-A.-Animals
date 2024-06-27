@@ -1,0 +1,46 @@
+﻿@page "/anuncioDet"
+@inject NavigationManager Navigation
+@code {
+    [Parameter]
+    public int id { get; set; }
+
+    private Anuncio anuncio;
+
+    protected override void OnInitialized()
+    {
+        // Código para buscar o anúncio pelo id
+        anuncio = new Anuncio { Id = id, Titulo = "Cachorro para adoção", Descricao = "Cachorro amigável de 2 anos.", Imagem = "https://via.placeholder.com/150" };
+    }
+
+    private void EditarAnuncio()
+    {
+        // Código para editar o anúncio
+        Navigation.NavigateTo($"/editar-anuncio");
+    }
+
+    private void DeletarAnuncio()
+    {
+        // Código para deletar o anúncio
+        Navigation.NavigateTo("/meus-anuncios");
+    }
+
+    private class Anuncio
+    {
+        public int Id { get; set; }
+        public string Titulo { get; set; }
+        public string Descricao { get; set; }
+        public string Imagem { get; set; }
+    }
+}
+
+<div class="container mt-5">
+    <div class="card">
+        <img src="@anuncio.Imagem" class="card-img-top" alt="@anuncio.Titulo">
+        <div class="card-body">
+            <h5 class="card-title">@anuncio.Titulo</h5>
+            <p class="card-text">@anuncio.Descricao</p>
+            <NavLink class="btn btn-primary" href="/editar-anuncio/@anuncio.Id">Editar</NavLink>
+            <button class="btn btn-danger" @onclick="DeletarAnuncio">Deletar</button>
+        </div>
+    </div>
+</div>

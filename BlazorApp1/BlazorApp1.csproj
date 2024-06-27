@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="Components\Pages\background.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\bootstrap\bakugo.png" />
   </ItemGroup>
 
